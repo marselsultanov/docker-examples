@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  web:
+    image: nginx
+    ports:
+    - 80:80
+    volumes:
+    - ./nginx/conf.d/jenkins.conf:/etc/nginx/conf.d/jenkins.conf
+    - ./nginx/conf.d/nexus.conf:/etc/nginx/conf.d/nexus.conf
+    logging:
+      driver: journald
+    depends_on:
+    - jenkins
+    - nexus
+
+  jenkins:
+    image: jenkins/jenkins
+    environment:
+    - JAVA_OPTS=
+        -Djenkins.install.runSetupWizard=false
+    volumes:
+    - jenkins_data:/var/jenkins_home
+    deploy:
+      resources:
+        limits:
+          cpus: '0.35'
+          memory: 500M
+    logging:
+      driver: journald
+          
+  nexus:
+    image: sonatype/nexus3
+    volumes:
+    - nexus_data:/nexus-data
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+    logging:
+      driver: journald
+          
+volumes:
+    jenkins_data:
+    nexus_data:
