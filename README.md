@@ -1,5 +1,5 @@
 # docker1
-Setup Nginx, Jenkins and Nexus with options:
+Setup Nginx, Jenkins and Nexus using docker-compose with options:
 1. Nginx redirect to Jenkins and Nexus
 2. Jenkins store all jobs and configuration data in external volume
 3. Nexus store all artifacts in external volume
