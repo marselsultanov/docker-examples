@@ -10,4 +10,4 @@ Setup Nginx, Jenkins and Nexus by Docker Compose with options:
 8. Custom network and IP addresses
 
 Also incluide:
-1. swarm.yml for setup Nginx, Jenkins and Nexus by Docker Swarm with same options (except custom network and IP addresses)
+1. swarm.yml for Docker Swarm, which setup Nginx, Jenkins and Nexus with same options (except custom network and IP addresses)
